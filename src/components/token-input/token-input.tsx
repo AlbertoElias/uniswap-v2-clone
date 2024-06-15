@@ -1,4 +1,3 @@
-import { formatUnits } from "ethers";
 import { useContext } from "react";
 import { tokens } from "../../constants/tokens";
 import { AuthContext } from "../../context/AuthContext";

@@ -32,7 +32,7 @@
   width: 20px;
   height: 20px;
   border: 3px solid #ccc;
-  border-top: 3px solid #fff;
+  border-top: 3px solid transparent;
   border-radius: 50%;
   animation: spin 1s linear infinite;
 }
@@ -48,4 +48,10 @@
 
 .loading .spinner {
   display: flex;
+}
+
+.tx-hash {
+  align-self: flex-end;
+  display: flex;
+  gap: 0.4rem;
 }

@@ -5,7 +5,7 @@ import { parseUnits } from 'ethers';
 import './swap.css';
 import { AuthContext } from '../../context/AuthContext';
 import { calculateTrade, swap } from '../../lib/uniswap';
-import { getBalance, getValidAmountRegex } from '../../lib/ethereum';
+import { getBalance, getValidAmountRegex, trimEthereumAddress } from '../../lib/ethereum';
 import { BLOCK_EXPLORERS, significantDigits } from '../../constants/app';
 import { tokens } from '../../constants/tokens';
 import Login from '../login/login';
@@ -110,11 +110,17 @@ export default function Swap() {
   async function handleSwap() {
     if (!connectedWallet?.signer || !tokenA || !tokenB) return;
     setIsLoading(true);
-    const tx = await swap(tokenA, tokenB, inputAmount, connectedWallet);
-    setTxHash(tx.hash);
-    await tx.wait();
-    setIsLoading(false);
-    setTimeout(() => setTxHash(''), 5000);
+    try {
+      const tx = await swap(tokenA, tokenB, inputAmount, connectedWallet);
+      setTxHash(tx.hash);
+      await tx.wait();
+      setTimeout(() => setTxHash(''), 5000);
+      handleInputChange('0');
+    } catch (e) {
+      console.error(e);
+    } finally {
+      setIsLoading(false);
+    }
   }
 
   return (
@@ -155,7 +161,16 @@ export default function Swap() {
         <span className="spinner"></span>
       </button>
 
-      {txHash && <p className="tx-hash">Transaction Hash: <a className="tx-hash-link" href={`${BLOCK_EXPLORERS[connectedWallet.chainId]}/tx/${txHash}`} target="_blank">{txHash}</a></p>}
+      {txHash &&
+        <p className="tx-hash">
+          <span>Transaction Hash:</span>
+          <a
+            className="tx-hash-link"
+            href={`${BLOCK_EXPLORERS[connectedWallet.chainId]}/tx/${txHash}`}
+            target="_blank">
+              {trimEthereumAddress(txHash)}
+            </a>
+        </p>}
     </div>
   )
 }

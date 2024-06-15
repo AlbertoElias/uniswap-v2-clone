@@ -16,9 +16,7 @@
 }
 
 a {
-  font-weight: 500;
   color: #646cff;
-  text-decoration: inherit;
 }
 a:hover {
   color: #747bff;
@@ -53,7 +51,7 @@ button:disabled:hover {
 }
 button:focus,
 button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
+  outline: 0;
 }
 button:disabled:focus,
 button:disabled:focus-visible {
