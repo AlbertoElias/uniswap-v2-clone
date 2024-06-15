@@ -125,8 +125,6 @@ export default function Swap() {
 
   return (
     <div className="swap">
-      <h2 className="swap-title">Swap</h2>
-
       <TokenInput
         title={"Sell"}
         token={tokenA}
