@@ -1,0 +1,64 @@
+.token-input {
+  width: 100%;
+  display: flex;
+  text-align: left;
+  border: 2px solid #aaa;
+  border-radius: 1rem;
+  padding: 1rem;
+  gap: 1rem;
+}
+
+.token-input-left,
+.token-input-right {
+  height: 6rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.token-input-left {
+  justify-content: flex-start;
+  flex-grow: 1;
+}
+
+.token-input-title {
+  font-size: 1rem;
+}
+
+.token-input-amount {
+  border: 0;
+  background: none;
+  flex: 1;
+  font-size: 2rem;
+}
+
+.token-input-amount:focus-visible {
+  outline: 0;
+}
+
+.token-input-right {
+  justify-content: flex-end;
+  align-items: flex-end;
+}
+
+.token-select-container {
+  display: flex;
+  align-items: center;
+}
+
+.token-select-container img {
+  width: 1.5rem;
+  height: 1.5rem;
+  margin-right: 0.5rem;
+}
+
+.token-select {
+  border: 0;
+  background-color: #f9f9f9;
+  padding: 0.6rem 1.2rem;
+  border-radius: 1rem;
+}
+
+.token-input-balance {
+  margin: 1rem 0 0;
+  color: #666;
+}
