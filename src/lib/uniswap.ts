@@ -12,13 +12,12 @@ import { tokens } from '../constants/tokens';
 const slippageTolerance = new Percent('50', '10000')
 
 export async function createPair(tokenA: Token, tokenB: Token, connectedWallet: ConnectedWallet): Promise<Pair> {
-  const pairAddress = await getPairAddress(tokenA, tokenB, connectedWallet);
-  console.log(pairAddress);
+  // const pairAddress = await getPairAddress(tokenA, tokenB, connectedWallet);
+  const pairAddress = Pair.getAddress(tokenA, tokenB)
   const pairContract = new Contract(pairAddress, IUniswapV2Pair.abi, connectedWallet.signer);
   const reserves = await pairContract["getReserves"]()
   const [reserve0, reserve1] = reserves
   const [token0, token1] = tokenA.sortsBefore(tokenB) ? [tokenA, tokenB] : [tokenB, tokenA];
-  console.log(`Reserves: ${reserves[0]}, ${reserves[1]}`)
   const pair = new Pair(CurrencyAmount.fromRawAmount(token0, reserve0.toString()), CurrencyAmount.fromRawAmount(token1, reserve1.toString()));
   return pair;
 }
@@ -59,9 +58,7 @@ function isLiquiditySufficient(amountIn: bigint, reserveIn: bigint, reserveOut: 
   const numerator = amountInWithFee * reserveOut;
   const denominator = reserveIn * BigInt(1000) + amountInWithFee;
   const amountOut = numerator / denominator;
-
-  console.log(`Amount Out: ${amountOut.toString()}`);
-  return amountOut > 0; // Ensure that the output amount is greater than zero
+  return amountOut > 0;
 }
 
 export async function calculateTrade(tokenA: Token, tokenB: Token, amountIn: bigint, connectedWallet: ConnectedWallet): Promise<Trade<Token, Token, TradeType>> {

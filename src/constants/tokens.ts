@@ -38,6 +38,12 @@ export const tokens: TokensInfo = {
       decimals: 18,
       symbol: "ETH",
       logo: "eth.png"
+    },
+    {
+      address: "0x350a791Bfc2C21F9Ed5d10980Dad2e2638ffa7f6",
+      decimals: 18,
+      symbol: "LINK",
+      logo: "link.png"
     }
   ],
 }

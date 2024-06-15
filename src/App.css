@@ -26,13 +26,7 @@
 }
 
 .address {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border: 1px solid #333;
-  background-color: #f9f9f9;
-  padding: 0.6rem 1.2rem;
-  border-radius: 2rem;
+  padding: 1rem;
 }
 
 .address-logo {

@@ -9,7 +9,7 @@ Currently, it only supports USDC and ETH on the Optimism network. You can add mo
 ### Running the app
 
 ```bash
-git clone 
+git clone git@github.com:AlbertoElias/uniswap-v2-clone.git
 npm install
 npm run dev
 ```
@@ -20,6 +20,8 @@ npm run dev
 2. If not, the app will prompt you to switch to Optimism. Accept the prompt on Metamask.
 3. Use the [Optimism bridge](https://app.optimism.io/bridge/deposit) to send over some ETH and/or USDC to the Optimism network.
 4. Enjoy swapping in the app!
+
+I added Chainlink as an example of how it would work with multiple tokens. There is no specific pool between USDC/LINK or ETH/LINK, so swapping won't work though..
 
 ### Sepolia setup
 

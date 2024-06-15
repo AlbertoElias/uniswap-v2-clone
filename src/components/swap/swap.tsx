@@ -132,10 +132,12 @@ export default function Swap() {
         token={tokenA}
         tokenBalance={BigInt(tokenABalance)}
         inputValue={inputValue}
-        tokenInputChange={tokenAInputChange}  
+        tokenInputChange={tokenAInputChange}
+        setToken={setTokenA}
+        setInputValue={(value) => handleInputChange(value)}
       />
 
-      <button className="switch-tokens" onClick={switchTokens}>
+      <button className="switch-tokens secondary" onClick={switchTokens}>
         <img src="/images/switch.svg" alt="Switch tokens" />
       </button>
 
@@ -144,6 +146,7 @@ export default function Swap() {
         token={tokenB}
         tokenBalance={BigInt(tokenBBalance)}
         inputValue={outputAmount}
+        setToken={setTokenB}
       />
 
       <button className={`swap-button ${isLoading && "loading"}`} onClick={handleSwap} disabled={!canSwap}>
